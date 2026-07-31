@@ -45,8 +45,9 @@ I designed and built a lightweight serverless microservice using AWS SAM, Docker
 ## Architecture & Data Flow
 
 ```mermaid
+%%{init: {'themeVariables': { 'edgeLabelBackground': '#F8FAFC' }}}%%
 flowchart TD
-    %% Node Definitions with multi-line text for roomier bubbles
+    %% Node Definitions with 2-line titles for spacious bubbles
     A("API Gateway Webhook<br/>POST /h3m_parser")
     B("AWS Lambda Service<br/>H3M_xlsx_parser")
     C[("Amazon S3 Bucket<br/>emi-v3 Storage")]
@@ -59,7 +60,7 @@ flowchart TD
 
     G("Downstream Output Service<br/>PHP Processing Lambda")
 
-    %% Data Flow Connections with 2-line labels to prevent cutoff
+    %% Data Flow Connections with 2-line labels
     A --> B
     B -->|"1. Stream Raw .xlsx<br/>File Object"| C
     B -->|"2. Load Bytes to<br/>Memory Buffer"| D
@@ -68,22 +69,30 @@ flowchart TD
     B -->|"5. Save Formatted<br/>JSON Output"| C
     B -->|"6. Trigger Asynchronous<br/>Event Relay"| G
 
-    %% Modern Soft Pastels (Non-Neon) with High-Contrast Text
+    %% Blueprint Color Classes
     classDef trigger fill:#E0F2FE,stroke:none,color:#0369A1,rx:14px,ry:14px;
-    classDef compute fill:#DCFCE7,stroke:none,color:#15803D,rx:14px,ry:14px;
-    classDef storage fill:#F3E8FF,stroke:#C084FC,stroke-width:2px,color:#6B21A8;
-    classDef process fill:#CCFBF1,stroke:none,color:#0F766E,rx:14px,ry:14px;
-    classDef relay fill:#FFEDD5,stroke:none,color:#9A3412,rx:14px,ry:14px;
+    classDef compute fill:#E2F1E6,stroke:none,color:#14532D,rx:14px,ry:14px;
+    classDef storage fill:#FEF9C3,stroke:#EAB308,stroke-width:2px,color:#713F12;
+    classDef process fill:#DBEAFE,stroke:none,color:#1E40AF,rx:14px,ry:14px;
+    classDef relay fill:#FFEDD5,stroke:none,color:#7C2D12,rx:14px,ry:14px;
 
-    %% Class Assignments
+    %% Category Assignments
     class A trigger;
+
+    %% AWS Lambda Compute
     class B compute;
+
+    %% Amazon S3 Storage Cylinder
     class C storage;
+
+    %% Pastel Blue internal process bubbles (No borders)
     class D,E,F process;
+
+    %% Downstream Relay Service
     class G relay;
 
-    %% Subgraph Styling: Smooth Light Background, Rounded Corners, NO Borders or Dotted Lines
-    style In-Memory fill:#F1F5F9,stroke:none,rx:18px,ry:18px,color:#475569;
+    %% Subgraph Container: Borderless, Soft Slate Fill
+    style In-Memory fill:#F1F5F9,stroke:none,rx:18px,ry:18px,color:#334155;
 ```
 
 ### Pipeline Execution Steps
