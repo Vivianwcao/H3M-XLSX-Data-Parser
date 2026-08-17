@@ -73,7 +73,7 @@ The service ingests inbound API Gateway webhooks and processes vendor Excel bill
 * **Dynamic Line Item Table Mapping:** Scans rows sequentially using set operations to identify table headers (`Line Item Description`, `Name`, `Qty`, `Unit`, `Rate`, `Subtotal`). The engine dynamically registers column indices and extracts line items regardless of vertical offset until encountering a total row marker.
 * **Asynchronous Relay & Output Storage:** Writes the formatted JSON output back to Amazon S3 for auditing and triggers a downstream PHP processing Lambda asynchronously without blocking the client HTTP response.
 
-***Example***
+***Example Output***
 ```json
 {
   "Invoice": {
